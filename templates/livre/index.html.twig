@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}listes des livres{% endblock %}
+
+{% block body %}
+
+
+    <div class="example-wrapper">
+
+        <h2 class="text-success text-monospace"> Listes des livres </h2>
+
+        <ul class="list-unstyled " >
+            {% for unLivre in lesLivres %}
+
+                <li>
+                    <!-- Button trigger modal -->
+
+                      <button type="button" id="livre" title="Infos du livre" data-toggle="modal" data-target="#myModal"> {{ unLivre.titre }}  </button>
+
+
+                </li> <br>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">Infos du livre</h4>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body" id="detail">
+                                    <strong> Genre : </strong> {{ unLivre.genre }}  <br>
+                                    <strong> Année de parution : </strong> {{ unLivre.annee|date('Y') }}  <br>
+                                    <strong> Nombre de pages :  </strong>{{ unLivre.nbpages }}  <br>
+                                    <strong> Résumé :  </strong>{{ unLivre.resume }}  <br>
+                                    <strong> Auteur  :</strong> {{ unLivre.auteur.nom }}  <br>
+                                    <strong> Bibliothèque dans laquelle il est rangé : </strong> {{ unLivre.biblio.lieu }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+            {% endfor %}
+        </ul>
+
+        <a class="btn btn-success" href="{{ path('Ajout_livre') }}">Ajouter un nouveau livre</a>
+
+    </div>
+
+    {% block javascripts %}
+
+        <script>
+            $(document).ready(function () {
+                $('#livre').click(function () {
+
+                    var url = "{{ path('Listes_Livres') }}";
+                    $.ajax({
+                        type: 'post',
+                        url: url,
+                        success: function (data) {
+
+
+                            $('#myModal').modal(show);
+                            $('#detail').html(data);
+
+
+                        }
+                    });
+                });
+            });
+        </script>
+
+    {% endblock %}
+
+
+{% endblock %}
+
+
+

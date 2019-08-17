@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
+
+
+    {% block stylesheets %}{% endblock %}
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <a class="navbar-brand" href="/">Accueil</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if navig is defined and navig == 'biblio' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('Listes_biblio') }}">Mes bibliothèques</a>
+            </li>
+            <li class="nav-item {% if navig is defined and navig == 'listesLivres' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('Listes_Livres') }}">Lister les livres</a>
+            </li>
+            <li class="nav-item {% if navig is defined and navig == 'listesAuteurs' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('Listes_auteurs') }}">Lister les auteurs</a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</nav>
+
+<div class="contenu">
+{% block body %}
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+
+{% endblock %}
+</div>
+</body>
+
 </html>

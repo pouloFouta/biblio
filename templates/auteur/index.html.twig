@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}listes des auteurs{% endblock %}
+
+{% block body %}
+  <div class="contenu">
+    <div class="example-wrapper">
+
+
+        <h2 class="text-success text-monospace"> Listes des auteurs </h2>
+        <ul>
+            {% for unAuteur in lesAuteurs %}
+
+
+                <li> <strong> {{ unAuteur.nom }} - {{ unAuteur.nationalite }}  </strong> </li>
+                <ul>
+                    {% for leLivre in unAuteur.tablivres %}
+
+                        <li> {{ leLivre.titre }}</li>
+
+                    {% endfor %}
+
+                </ul>
+            {% endfor %}
+        </ul>
+        <a class="btn btn-success" href="{{ path('Ajout_auteur') }}">Ajouter un auteur</a>
+    </div>
+  </div>
+{% endblock %}
+

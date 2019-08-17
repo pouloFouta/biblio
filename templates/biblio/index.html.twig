@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}listes des Biblio{% endblock %}
+
+{% block body %}
+
+
+          <h2 class="text-success text-monospace"> Les bibliothèques et les livres  </h2>
+
+        <ul>
+            {# on parcours   chaque bibliothèque , on recupère son code et son lieu  #}
+            {% for uneBib in lesBiblio %}
+                <li> <strong> {{ uneBib.code }} -{{ uneBib.lieu }} </strong>  </li>
+                 <ul>
+                     {#  une fois dans la bibliothèque en cours  ,on recupère l'ensemble des livres
+                       par l'attribut listeslivres de la biblio (son getter qui est getListesLivres) #}
+                     {% for  unLivre in uneBib.listeslivres   %}
+                         {# a ce niveau on affiche son titre  #}
+                         <li> {{  unLivre.titre }}</li>
+
+                {% endfor %}
+                 </ul>
+            {% endfor %}
+
+        </ul>
+
+    <a class="btn btn-success" href="{{ path('Ajout_biblio') }}">Ajouter une bibliothèque</a>
+    </div>
+{% endblock %}

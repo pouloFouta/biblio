@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details {% endblock %}
+
+{% block body %}
+
+    <div class="example-wrapper">
+
+        <h2 class="text-success text-monospace"> Infos du livre  </h2>
+
+         Titre : {{ unLivre.titre }} <br>
+         Genre : {{ unLivre.genre }}  <br>
+         Année de parution : {{ unLivre.annee }}  <br>
+         Nombre de pages : {{ unLivre.nbpages }}  <br>
+         Résumé : {{ unLivre.resume }}  <br>
+         Auteur  : {{ unLivre.auteur.nom }}  <br>
+         Bibliothèque dans laquelle il est rangé : {{ unLivre.biblio.lieu }}
+
+    </div>
+{% endblock %}
+
+
+

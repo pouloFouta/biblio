@@ -1,3 +1,52 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+Accueil:
+    path:    /accueil
+    controller: App\Controller\AccueilController::index
+
+Ajout_livre:
+    path:    /ajoutLivre
+    controller: App\Controller\LivreController::ajoutLivre
+
+Listes_Livres:
+    path:    /listesLivres
+    controller: App\Controller\LivreController::listesLivres
+
+Details_livre:
+    path:    /details
+    controller: App\Controller\LivreController::detailsLivre
+
+
+Listes_Livres_auteur:
+    path:    /listesLivres/{auteur}
+    controller: App\Controller\LivreController::listesLivresParAuteur
+
+Listes_Livres_genre:
+    path:    /listesLivres/{genre}
+    controller: App\Controller\LivreController::listesLivresParGenre
+
+
+Ajout_biblio:
+    path:    /ajoutBiblio
+    controller: App\Controller\BiblioController::ajoutBiblio
+
+
+Listes_biblio:
+    path:    /listesBiblio
+    controller: App\Controller\BiblioController::listesBiblio
+
+Ajout_auteur:
+    path:    /ajoutAuteur
+    controller: App\Controller\AuteurController::ajoutAuteur
+
+Listes_auteurs:
+    path:    /listesAuteurs
+    controller: App\Controller\AuteurController::listesAuteurs
+
+Livres_auteur:
+    path:    /listesAuteurs/{nom}
+    controller: App\Controller\AuteurController::auteurEtSesLivres
+Livres_Biblio:
+    path:    /listesBiblioEtLivres
+    controller: App\Controller\AuteurController::listesBiblioEtLivres
+
+
+
